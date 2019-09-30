@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstdint>
 
-static uint64_t fib(uint64_t n) {
+static uint64_t fibo(uint64_t n) {
   if (n <= 1) return 1;
-  return fib(n - 1) + fib(n - 2);
+  return fibo(n - 1) + fibo(n - 2);
 }
 
 int main() {
-  printf("%lu \n", fib(46));
+  printf("%lu \n", fibo(46));
 }
 
