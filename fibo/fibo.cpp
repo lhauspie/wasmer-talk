@@ -7,6 +7,5 @@ static uint64_t fibo(uint64_t n) {
 }
 
 int main() {
-  printf("%lu \n", fibo(46));
+  printf("%llu \n", fibo(46));
 }
-

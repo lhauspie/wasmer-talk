@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Fibonacci</title>
+    <script>
+      function fibo(n) {
+        if (n <= 1) return 1;
+        return fibo(n - 1) + fibo(n - 2);
+      }
+      function time(f, n) {
+        startTime = new Date();
+        result = f(n);
+        endTime = new Date();
+        duration = (endTime - startTime)
+        document.getElementById("time").innerText = "Calculated in " + duration.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " ms";
+        return result;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="document.getElementById('fibo').innerText = time(fibo, 46)">Fibo JavaScript</button>
+    <div id="fibo"></div>
+    <div id="time"></div>
+  </body>
+</html>
