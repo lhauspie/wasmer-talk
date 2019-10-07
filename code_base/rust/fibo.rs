@@ -4,5 +4,5 @@ fn fibo(n: u64) -> u64 {
 }
 
 fn main() {
-  println!("{}", fibo(46));
+  println!("{}", fibo(8));
 }
