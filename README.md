@@ -30,6 +30,10 @@ $ make wasm # to do both previous commands at once
 
 The `make clean` command will remove all binaries.
 
+Run the wasm file by using `node`:
+```
+node fibo_cpp.js 10
+```
 
 ## Interesting Links
 
@@ -41,4 +45,5 @@ https://mbebenita.github.io/WasmExplorer/
 ### Some blog posts
 https://medium.com/wasmer/executing-webassembly-in-your-rust-application-d5cd32e8ce46
 https://medium.com/wasmer/running-webassembly-from-any-language-5741f6320ccd
+https://opensource.com/article/19/4/command-line-playgrounds-webassembly
 https://ariya.io/2019/05/basics-of-memory-access-in-webassembly  
