@@ -18,4 +18,4 @@ compile: compile-rust compile-cpp
 wasm: wasm-rust wasm-cpp
 
 clean:
-	rm -rf target/*
+	rm -rf target

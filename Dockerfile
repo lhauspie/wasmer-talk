@@ -21,8 +21,7 @@ RUN curl https://sh.rustup.rs -sSf -o rustup-init.sh \
  && . ~/.cargo/env \
  && rustup toolchain install nightly \
  && rustup target add wasm32-wasi --toolchain nightly \
- && rustup target add wasm32-unknown-unknown --toolchain nightly \
- && rustup target add wasm_bindgen --toolchain nightly
+ && rustup target add wasm32-unknown-unknown --toolchain nightly
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 ENV PATH="${PATH}:/emsdk"
