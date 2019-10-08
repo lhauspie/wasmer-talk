@@ -1,0 +1,67 @@
+= Wasmer, la VM du futur ?
+:imagesdir: images
+// :backend: revealjs
+:customcss: slides.css
+
+== WASM
+=== WASM - promessess
+[%step]
+
+* plusieurs langages
+* une cible de compilation...
+* ... pour toutes les plateformes
+
+=== WASM - promessess
+[%step]
+
+* performances
+* sécurité
+
+=== WASM - adoption
+[%step]
+
+* par défaut dans tous les principaux navigateurs
+* poussé par W3C, Mozilla, Microsoft, Google, Apple
+
+=== WASM - démo
+Fibonacci Rust / WASM / Firefox
+
+=== WASM - manque
+[%step]
+
+* interfaces OS
+* -> WASI
+
+=== WASI
+[%step]
+
+* interfaces système
+* portabilité
+* sécurité
+
+=== WASI - implémentations
+[%step]
+
+* Wasmer
+* Wasmtime
+* Lucet
+* polyfill
+
+[%notitle]
+=== WASI - implémentations
+image::inception.gif[background, size=cover]
+
+== Wasmer
+
+=== Interface système
+* TODO exemple sur la lecture d'un fichier ?
+* TODO voir ce qui est possible de faire ?
+
+=== Portabilité
+* TODO OS/archis différents // natif
+* TODO depuis un programme natif (lib wasmer)
+* TODO Browser ?
+
+=== Sécurité
+* TODO exemple de lecture de fichier sensible // natif
+
