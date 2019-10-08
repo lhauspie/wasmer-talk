@@ -1,0 +1,8 @@
+= Présentation Wasmer
+
+== Build slides
+
+[sh]
+----
+docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor-revealjs -r asciidoctor-diagram -a revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0 slides.adoc -o index.html
+----
