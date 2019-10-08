@@ -11,7 +11,10 @@ wasm-cpp: prepare
 	em++ -Os code_base/cpp/main.cpp -Os code_base/cpp/fibo.cpp -s EXPORT_ALL=1 -s ONLY_MY_CODE=1 -g -o target/fibo_cpp.wasm
 
 wasm-rust: prepare
-	rustc +nightly code_base/rust/fibo.rs --target wasm32-wasi -o target/fibo_rust.wasm
+	#rustc +nightly code_base/rust/fibo.rs --target wasm32-wasi -o fibo_rust.wasm
+	cd code_base/rust && cargo +nightly build --target wasm32-unknown-unknown --release
+	cd code_base/rust && wasm-gc target/wasm32-unknown-unknown/release/fibo_rust.wasm -o target/fibo_rust.gc.wasm
+	cp code_base/rust/target/fibo_rust.gc.wasm target/fibo_rust.wasm
 
 compile: compile-rust compile-cpp
 

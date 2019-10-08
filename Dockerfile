@@ -9,8 +9,8 @@ RUN apt update \
 # install cpp toolchain
 RUN git clone https://github.com/emscripten-core/emsdk.git \
  && cd emsdk \
- && ./emsdk install latest \
- && ./emsdk activate latest \
+ && ./emsdk install 1.38.46 \
+ && ./emsdk activate 1.38.46 \
  && . ./emsdk_env.sh
 
 # install rust toolchain
@@ -21,7 +21,8 @@ RUN curl https://sh.rustup.rs -sSf -o rustup-init.sh \
  && . ~/.cargo/env \
  && rustup toolchain install nightly \
  && rustup target add wasm32-wasi --toolchain nightly \
- && rustup target add wasm32-unknown-unknown --toolchain nightly
+ && rustup target add wasm32-unknown-unknown --toolchain nightly \
+ && cargo install wasm-gc
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 ENV PATH="${PATH}:/emsdk"

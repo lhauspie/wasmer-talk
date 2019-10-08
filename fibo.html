@@ -22,7 +22,7 @@
       }
     </script>
     <!-- =========================================================== -->
-    <script>
+    <!--cript>
       let cpp_fibo = function(n) {
         return -n;
       }
@@ -42,7 +42,7 @@
         .then(instance => {
           cpp_fibo = instance.exports.__Z4fiboj;
         });
-    </script>
+    </script-->
     <!-- =========================================================== -->
     <script>
       let rust_fibo = function(n) {
@@ -52,7 +52,6 @@
       function loadWasm(fileName) {
         var imports = {
           wasi_unstable: {},
-          fd_prestat_get: function(){},
           // env: {},
           // abortStackOverflow: {},
         };
@@ -61,11 +60,9 @@
           .then(bits => WebAssembly.compile(bits))
           .then(module => WebAssembly.instantiate(module, imports));
       };
-
       loadWasm('target/fibo_rust.wasm')
         .then(instance => {
-          console.log(instance.exports);
-          rust_fibo = instance.exports.__Z4fiboj;
+          rust_fibo = instance.exports.fibo;
         });
     </script>
 
@@ -78,7 +75,7 @@
     <div id="cpp_time"></div>
     <br/>
     <button onclick="execute(rust_fibo, 43, 'rust')">Fibo WebAssembly from Rust</button>
-    <div id="cpp_fibo"></div>
-    <div id="cpp_time"></div>
+    <div id="rust_fibo"></div>
+    <div id="rust_time"></div>
   </body>
 </html>
