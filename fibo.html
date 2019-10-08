@@ -38,7 +38,7 @@
           .then(module => WebAssembly.instantiate(module, imports));
       };
 
-      loadWasm('fibo_cpp.wasm')
+      loadWasm('target/fibo_cpp.wasm')
         .then(instance => {
           cpp_fibo = instance.exports.__Z4fiboj;
         });
@@ -62,7 +62,7 @@
           .then(module => WebAssembly.instantiate(module, imports));
       };
 
-      loadWasm('fibo_rust.wasm')
+      loadWasm('target/fibo_rust.wasm')
         .then(instance => {
           console.log(instance.exports);
           rust_fibo = instance.exports.__Z4fiboj;
