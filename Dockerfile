@@ -24,6 +24,10 @@ RUN curl https://sh.rustup.rs -sSf -o rustup-init.sh \
  && rustup target add wasm32-unknown-unknown --toolchain nightly \
  && cargo install wasm-gc
 
+RUN /root/.cargo/bin/rustup target add wasm32-unknown-emscripten --toolchain nightly
+
+RUN curl https://get.wasmer.io -sSfL | sh
+
 ENV PATH="/root/.cargo/bin:${PATH}"
 ENV PATH="${PATH}:/emsdk"
 ENV PATH="${PATH}:/emsdk/clang/fastcomp/build_incoming_64/bin"
@@ -41,4 +45,4 @@ ENV EMSDK_NODE="/emsdk/node/12.9.1_64bit/bin/node"
 
 WORKDIR /project
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["bash", "-l"]
