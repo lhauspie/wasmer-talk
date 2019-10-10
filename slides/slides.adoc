@@ -1,17 +1,29 @@
 = Wasmer, la VM du futur ?
 :imagesdir: images
-// :backend: revealjs
+:backend: revealjs
 :customcss: slides.css
 
+== WASM coté Backend ?
+
+* WHAT ???
+
+=== WASM coté Backend ?
+
+image::twitter.png[]
+
+=== WASM coté Backend ?
+
+image::postgres.png[width=70%]
+
 == WASM
-=== WASM - promessess
+=== WASM - promesses
 [%step]
 
 * plusieurs langages
 * une cible de compilation...
 * ... pour toutes les plateformes
 
-=== WASM - promessess
+=== WASM - promesses
 [%step]
 
 * performances
@@ -24,7 +36,7 @@
 * poussé par W3C, Mozilla, Microsoft, Google, Apple
 
 === WASM - démo
-Fibonacci Rust / WASM / Firefox
+Fibonacci Rust et C++ -> WASM -> Firefox
 
 === WASM - manque
 [%step]
@@ -32,12 +44,60 @@ Fibonacci Rust / WASM / Firefox
 * interfaces OS
 * -> WASI
 
-=== WASI
+== WASI
 [%step]
 
 * interfaces système
 * portabilité
 * sécurité
+
+[%notitle]
+=== Interface système
+image::wasi1.png[background, size=contain]
+
+[%notitle]
+=== Interface système
+image::wasi2.png[background, size=contain]
+
+[%notitle]
+=== Interface système
+image::wasi3.png[background, size=contain]
+
+[%notitle]
+=== Interface système
+image::wasi4.png[background, size=contain]
+
+=== Interface système
+* 45 fonctions aujourd'hui
+* __wasi_path_open()
+* __wasi_sock_recv()
+
+[%notitle]
+=== Portabilité
+image::port1.png[background, size=contain]
+
+[%notitle]
+=== Portabilité
+image::port2.png[background, size=contain]
+
+=== Portabilité - démo ?
+* TODO OS/archis différents // natif ?
+
+[%notitle]
+=== Sécurité
+image::secu1.png[background, size=contain]
+
+[%notitle]
+=== Sécurité
+image::secu2.png[background, size=contain]
+
+[%notitle]
+=== Sécurité
+image::secu3.png[background, size=contain]
+
+=== Sécurité
+* lecture d'un fichier
+* appel HTTP 💣
 
 === WASI - implémentations
 [%step]
@@ -45,23 +105,57 @@ Fibonacci Rust / WASM / Firefox
 * Wasmer
 * Wasmtime
 * Lucet
+* Wasmer-js
 * polyfill
-
-[%notitle]
-=== WASI - implémentations
-image::inception.gif[background, size=cover]
 
 == Wasmer
 
-=== Interface système
-* TODO exemple sur la lecture d'un fichier ?
-* TODO voir ce qui est possible de faire ?
+=== Wasmer
+* CLI : wasmer run fibo.wasm
+[sh]
+----
+wasmer run fibo.wasm
+----
+
+=== Wasmer
+* WAPM : Package manager
+[sh]
+----
+wapm install -g lhauspie/fibo
+fibo 10
+----
+
+=== Wasmer
+
+* Runtime
+
+image::runtime_compat.png[width=70%]
 
 === Portabilité
-* TODO OS/archis différents // natif
-* TODO depuis un programme natif (lib wasmer)
-* TODO Browser ?
+[%step]
 
-=== Sécurité
-* TODO exemple de lecture de fichier sensible // natif
+* améliore la portabilité
+* wasmer_runtime
+* Démo : C++ -> WASM -> Rust
 
+== Conclusion
+[%step]
+
+* ouvre des possibilités
+** https://wasm.fastlylabs.com
+** https://webassembly.sh
+** portage nginx, sqlite
+
+== Conclusion
+
+* peu mature
+
+=== Conclusion
+
+* dangereux
+
+image::fou.jpg[]
+
+[%notitle]
+=== Image
+image::inception.gif[background, size=cover]
