@@ -13,8 +13,11 @@ wasm-cpp: prepare
 wasm-rust: prepare
 	cd code_base/rust && cargo +nightly build --target wasm32-wasi --release
 	cd code_base/rust && cargo +nightly build --target wasm32-unknown-unknown --release
+	# cd code_base/rust && cargo +nightly build --target wasm32-unknown-emscripten --release
 	cd code_base/rust && wasm-gc target/wasm32-unknown-unknown/release/fibo_rust.wasm -o target/fibo_rust.gc.wasm
-	cp code_base/rust/target/fibo_rust.gc.wasm target/fibo_rust.wasm
+	cp code_base/rust/target/fibo_rust.gc.wasm target/fibo_rust_js.wasm
+	cp code_base/rust/target/wasm32-wasi/release/fibo_rust.wasm target/fibo_rust.wasm
+	# rustc --target=wasm32-unknown-emscripten code_base/rust/src/main.rs -o target/fibo_rust.js -C opt-level=s
 
 compile: compile-rust compile-cpp
 
@@ -22,3 +25,4 @@ wasm: wasm-rust wasm-cpp
 
 clean:
 	rm -rf target
+	rm -rf code_base/rust/target

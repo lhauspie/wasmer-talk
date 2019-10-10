@@ -35,6 +35,13 @@ Run the wasm file by using `node`:
 node fibo_cpp.js 10
 ```
 
+Run the wasm file by using wasmer or wasmtime
+```
+wasmtime target/fibo_rust.wasm 10
+wasmer run target/fibo_rust.wasm 10
+```
+
+
 ## Interesting Links
 
 ### Tuto and Explorer

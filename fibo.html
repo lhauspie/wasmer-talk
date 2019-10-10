@@ -22,7 +22,7 @@
       }
     </script>
     <!-- =========================================================== -->
-    <!--cript>
+    <script>
       let cpp_fibo = function(n) {
         return -n;
       }
@@ -42,7 +42,7 @@
         .then(instance => {
           cpp_fibo = instance.exports.__Z4fiboj;
         });
-    </script-->
+    </script>
     <!-- =========================================================== -->
     <script>
       let rust_fibo = function(n) {
@@ -52,15 +52,15 @@
       function loadWasm(fileName) {
         var imports = {
           wasi_unstable: {},
-          // env: {},
-          // abortStackOverflow: {},
+          env: {},
+          abortStackOverflow: {}
         };
         return fetch(fileName, { credentials: 'same-origin' })
           .then(response => response.arrayBuffer())
           .then(bits => WebAssembly.compile(bits))
           .then(module => WebAssembly.instantiate(module, imports));
       };
-      loadWasm('target/fibo_rust.wasm')
+      loadWasm('target/fibo_rust_js.wasm')
         .then(instance => {
           rust_fibo = instance.exports.fibo;
         });
