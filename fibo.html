@@ -38,7 +38,7 @@
           .then(module => WebAssembly.instantiate(module, imports));
       };
 
-      loadWasm('target/fibo_cpp.wasm')
+      loadWasm('target/fibo_cpp_js.wasm')
         .then(instance => {
           cpp_fibo = instance.exports.__Z4fiboj;
         });
