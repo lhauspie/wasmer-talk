@@ -5,9 +5,9 @@
   </head>
   <body>
     <script>
-        function execute(f, n, p) {
+        function execute(f, p) {
           startTime = new Date();
-          result = f(n);
+          result = f(document.getElementById('n').value);
           endTime = new Date();
           duration = (endTime - startTime)
           document.getElementById(p + "_fibo").innerText = result;
@@ -66,15 +66,18 @@
         });
     </script>
 
-    <button onclick="execute(js_fibo, 43, 'js')">Fibo JavaScript</button>
+    N : <input id="n" value="43"/>
+    <br/>
+    <br/>
+    <button onclick="execute(js_fibo, 'js')">Fibo JavaScript</button>
     <div id="js_fibo"></div>
     <div id="js_time"></div>
     <br/>
-    <button onclick="execute(cpp_fibo, 43, 'cpp')">Fibo WebAssembly from C++</button>
+    <button onclick="execute(cpp_fibo, 'cpp')">Fibo WebAssembly from C++</button>
     <div id="cpp_fibo"></div>
     <div id="cpp_time"></div>
     <br/>
-    <button onclick="execute(rust_fibo, 43, 'rust')">Fibo WebAssembly from Rust</button>
+    <button onclick="execute(rust_fibo, 'rust')">Fibo WebAssembly from Rust</button>
     <div id="rust_fibo"></div>
     <div id="rust_time"></div>
   </body>

@@ -2,10 +2,10 @@ prepare:
 	mkdir -p target
 
 compile-cpp: prepare
-	g++ code_base/cpp/fibo.cpp code_base/cpp/main.cpp -o target/fibo_cpp.exe
+	g++ code_base/cpp/fibo.cpp code_base/cpp/main.cpp -o target/fibo_cpp
 
 compile-rust: prepare
-	rustc code_base/rust/src/main.rs -o target/fibo_rust.exe
+	rustc code_base/rust/src/main.rs -o target/fibo_rust
 
 wasm-cpp: prepare
 	em++ -Os code_base/cpp/main.cpp -Os code_base/cpp/fibo.cpp -s EXPORT_ALL=1 -s ONLY_MY_CODE=1 -g -o target/fibo_cpp.wasm
@@ -34,5 +34,4 @@ perf:
 	time java -Xint -cp code_base/java Fibonacci 37
 
 clean:
-	rm -rf target
-	rm -rf code_base/rust/target
+	find . -name "target" | xargs rm -rf
