@@ -23,6 +23,16 @@ compile: compile-rust compile-cpp
 
 wasm: wasm-rust wasm-cpp
 
+perf:
+	echo "******************** RUST NATIF ********************"
+	time code_base/rust/target/release/fibo_rust 43
+	echo "******************** WASM ********************"
+	time wasmer run target/fibo_rust.wasm 43
+	echo "******************** JVM ********************"
+	time java -cp code_base/java Fibonacci 43
+	echo "******************** JVM without JIT ********************"
+	time java -Xint -cp code_base/java Fibonacci 37
+
 clean:
 	rm -rf target
 	rm -rf code_base/rust/target
