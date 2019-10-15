@@ -5,7 +5,7 @@ compile-cpp: prepare
 	g++ code_base/cpp/fibo.cpp code_base/cpp/main.cpp -o target/fibo_cpp
 
 compile-rust: prepare
-	rustc code_base/rust/src/main.rs -o target/fibo_rust
+	rustc code_base/rust/src/main.rs -o target/fibo_rust -C opt-level=3
 
 wasm-cpp: prepare
 	em++ -Os code_base/cpp/main.cpp -Os code_base/cpp/fibo.cpp -s EXPORT_ALL=1 -s ONLY_MY_CODE=1 -g -o target/fibo_cpp.wasm
@@ -24,13 +24,13 @@ compile: compile-rust compile-cpp
 wasm: wasm-rust wasm-cpp
 
 perf:
-	echo "******************** RUST NATIF ********************"
-	time code_base/rust/target/release/fibo_rust 43
-	echo "******************** WASM ********************"
+	@echo "******************** RUST NATIF ********************"
+	time target/fibo_rust 43
+	@echo "******************** WASM ********************"
 	time wasmer run target/fibo_rust.wasm 43
-	echo "******************** JVM ********************"
+	@echo "******************** JVM ********************"
 	time java -cp code_base/java Fibonacci 43
-	echo "******************** JVM without JIT ********************"
+	@echo "******************** JVM without JIT ********************"
 	time java -Xint -cp code_base/java Fibonacci 37
 
 clean:
