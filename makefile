@@ -27,6 +27,8 @@ wasm: wasm-rust wasm-cpp
 perf:
 	@echo "******************** RUST NATIF ********************"
 	time target/fibo_rust 43
+	@echo "******************** CPP NATIF ********************"
+	time target/fibo_cpp 43
 	@echo "******************** WASM RUST ********************"
 	time wasmer run target/fibo_rust.wasm 43
 	@echo "******************** WASM CPP ********************"
