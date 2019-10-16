@@ -30,22 +30,6 @@ RUN curl https://get.wasmer.io -sSfL | sh
 RUN apt install -y time openjdk-11-jre
 RUN echo ". /emsdk/emsdk_env.sh" >> /root/.profile
 
-
-# ENV PATH="/root/.cargo/bin:${PATH}"
-# ENV PATH="${PATH}:/emsdk"
-# ENV PATH="${PATH}:/emsdk/clang/fastcomp/build_incoming_64/bin"
-# ENV PATH="${PATH}:/emsdk/node/8.9.1_64bit/bin"
-# ENV PATH="${PATH}:/emsdk/emscripten/incoming"
-# ENV PATH="${PATH}:/emsdk/binaryen/master_64bit_binaryen/bin"
-# ENV PATH="${PATH}:/emsdk/fastcomp/emscripten"
-# ENV PATH="${PATH}:/emsdk/node/12.9.1_64bit/bin"
-
-# ENV EMSDK="/emsdk"
-# ENV EM_CONFIG="/root/.emscripten"
-# ENV EMSCRIPTEN="/emsdk/emscripten/incoming"
-# ENV BINARYEN_ROOT="/emsdk/binaryen/master_64bit_binaryen"
-# ENV EMSDK_NODE="/emsdk/node/12.9.1_64bit/bin/node"
-
 WORKDIR /project
 
 ENTRYPOINT ["bash", "-l"]
