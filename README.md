@@ -28,6 +28,8 @@ $ make wasm-rust # to compile only fibo.rs to fibo_rust.wasm
 $ make wasm # to do both previous commands at once
 ```
 
+The `make all` command will build all binaries.
+
 The `make clean` command will remove all binaries.
 
 Run the wasm file by using `node`:
