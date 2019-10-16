@@ -24,6 +24,8 @@ compile: compile-rust compile-cpp
 
 wasm: wasm-rust wasm-cpp
 
+all: compile wasm
+
 perf:
 	@echo "******************** RUST NATIF ********************"
 	time target/fibo_rust 43
