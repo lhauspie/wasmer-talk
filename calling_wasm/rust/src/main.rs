@@ -15,7 +15,7 @@ use wasmer_runtime::{
 };
 
 // Make sure that the compiled wasm-sample-app is accessible at this path.
-static WASM: &'static [u8] = include_bytes!("../../../target/fibo_cpp.wasm");
+static WASM: &'static [u8] = include_bytes!("../../../target/fibo_cpp_js.wasm");
 
 fn main() -> error::Result<()> {
     let descriptor = MemoryDescriptor::new(Pages(256), Some(Pages(256)), false).unwrap();
@@ -31,12 +31,9 @@ fn main() -> error::Result<()> {
 
     let instance = instantiate(WASM, &import_object)?;
     let fibo: Func<i32, i32> = instance.func("__Z4fiboj")?;
-    let main: Func<(), i32> = instance.func("_main")?;
 
     println!("F({}) = {}", 11, fibo.call(11)?);
 
-    main.call()?;
-    
     Ok(())
 }
 
