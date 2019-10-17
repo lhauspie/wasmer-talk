@@ -7,6 +7,10 @@ cd calling_wasm/rust && make build
 make clean
 
 Ouvrir les onglets
+Démarrer VM Windows
+Démarrer le cast du téléphone
+cd /home/alocquet/dev/projects/zenika/conf/scrcpy
+./run x
 
 ## Démo - wasmer
 make all
